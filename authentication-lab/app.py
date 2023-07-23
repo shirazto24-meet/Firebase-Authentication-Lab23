@@ -5,6 +5,20 @@ import pyrebase
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = 'super-secret-key'
 
+config = {
+  "apiKey": "AIzaSyDRa5Ivx-Az9YPibYY0HsQGXWqlwZcZRhs",
+  "authDomain": "waterbottle-1ac10.firebaseapp.com",
+  "projectId": "waterbottle-1ac10",
+  "storageBucket": "waterbottle-1ac10.appspot.com",
+  "messagingSenderId": "917953316977",
+  "appId": "1:917953316977:web:15de65c998dd452059f3d0",
+  "measurementId": "G-H255FGG9SS"
+  "databaseURL":""
+}
+
+firebase = pyrebase.initialize_app(config)
+auth = firebase.auth()
+
 
 @app.route('/', methods=['GET', 'POST'])
 def signin():
