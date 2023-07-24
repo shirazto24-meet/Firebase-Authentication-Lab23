@@ -27,7 +27,16 @@ def signin():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    return render_template("signup.html")
+    if method == 'POST':
+        error= ""
+        try:
+            email= request.form['email']
+            password = request.form['password']
+            login_session['user'] = auth.create_user_with_email_and_password(email, password)
+            return redirect(url_for('add_html'))
+        except:
+            error = "auth failed"
+            return render_template("signup.html")
 
 
 @app.route('/add_tweet', methods=['GET', 'POST'])
